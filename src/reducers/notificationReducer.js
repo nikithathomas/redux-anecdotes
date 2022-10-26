@@ -14,3 +14,15 @@ const notificationSlice = createSlice({
 })
 
 export default notificationSlice.reducer
+
+export const setNotification = (content, timeout) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'notification/notifyNotification',
+      payload: `you voted for ${content}`,
+    })
+    setTimeout(() => {
+      dispatch({ type: 'notification/removeNotification' })
+    }, timeout * 1000)
+  }
+}
